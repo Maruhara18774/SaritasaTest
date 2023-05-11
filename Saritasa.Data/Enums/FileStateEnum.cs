@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Saritasa.Data.Enums
 {
-    public enum FileType
+    public enum FileStateEnum
     {
-        Url,
-        Text
+        InUse,
+        Deleted
     }
 }

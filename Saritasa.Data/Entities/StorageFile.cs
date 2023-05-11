@@ -11,10 +11,11 @@ namespace Saritasa.Data.Entities
     {
         public Guid ID { get; set; }
         public bool DownloadOnce { get; set; } = false;
-        public FileType Type { get; set; }
+        public FileTypeEnum Type { get; set; }
         public string? Url { get; set; }
         public Guid UserID { get; set; }
         public string? UpdateByUserID { get; set; }
+        public FileStateEnum FileState { get; set; } = FileStateEnum.InUse;
 
         public virtual User? User { get; set; }
     }
