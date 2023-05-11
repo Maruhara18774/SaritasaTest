@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saritasa.BackendApi", "BackendApi\Saritasa.BackendApi.csproj", "{EDC8B2AF-8B94-4C65-8A3B-0BAABBB09778}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saritasa.Data", "Saritasa.Data\Saritasa.Data.csproj", "{9A58DF06-B69B-4AC8-94A8-C42C1CA08BF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDC8B2AF-8B94-4C65-8A3B-0BAABBB09778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC8B2AF-8B94-4C65-8A3B-0BAABBB09778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC8B2AF-8B94-4C65-8A3B-0BAABBB09778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC8B2AF-8B94-4C65-8A3B-0BAABBB09778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A58DF06-B69B-4AC8-94A8-C42C1CA08BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A58DF06-B69B-4AC8-94A8-C42C1CA08BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A58DF06-B69B-4AC8-94A8-C42C1CA08BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A58DF06-B69B-4AC8-94A8-C42C1CA08BF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF71850F-3E22-4060-A18B-969B8F4C7B2A}
+	EndGlobalSection
+EndGlobal
