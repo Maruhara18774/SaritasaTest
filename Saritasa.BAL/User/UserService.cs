@@ -28,27 +28,46 @@ namespace Saritasa.BAL.User
             throw new NotImplementedException();
         }
 
-        public Task<string> CreateAsync(RegisterUserRequest request)
+        public async Task<string> CreateAsync(RegisterUserRequest request)
         {
-            throw new NotImplementedException();
+            // Check is this user exist on system --> If yes, deny
+            var checkUser = await _userManager.FindByEmailAsync(request.Email);
+            if (checkUser != null) return "This email is exist in system";
+            var user = new Data.Entities.User()
+            {
+                UserName = request.Email,
+                Email = request.Email
+
+            };
+            // Create user
+            var result = await _userManager.CreateAsync(user, request.Password);
+            if (result.Succeeded)
+            {
+                return "Account was created successfully";
+            }
+            return "Error";
         }
 
         public async Task<string> Login(LoginUserRequest request)
         {
+            // Check email is exist in system
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null) return "Wrong email";
+            // Check password is it correct
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, false);
             if (!result.Succeeded) return "Wrong password";
 
-            var roles = await _userManager.GetRolesAsync(user);
+            // Valid information - Generate token
             var claims = new[]
             {
                 new Claim(ClaimTypes.Authentication, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
             };
+            // Key: 0123456789ASDQWE; Issuer: Saritasa.
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("0123456789ASDQWE"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            // Token will be expired before 3 hours
             var token = new JwtSecurityToken("Saritasa",
                 "Saritasa",
                 claims,
