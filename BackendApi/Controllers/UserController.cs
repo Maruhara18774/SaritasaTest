@@ -20,7 +20,7 @@ namespace Saritasa.BackendApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginUserRequest input)
         {
-            var result = await _userService.Login(input);
+            var result = await _userService.LoginAsync(input);
             if(result == "Wrong email" || result == "Wrong password") return BadRequest(result);
             return Ok(result);
         }

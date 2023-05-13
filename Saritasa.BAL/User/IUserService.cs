@@ -10,6 +10,6 @@ namespace Saritasa.BAL.User
     public interface IUserService
     {
         Task<string> CreateAsync(RegisterUserRequest request);
-        Task<string> Login(LoginUserRequest request);
+        Task<string> LoginAsync(LoginUserRequest request);
     }
 }

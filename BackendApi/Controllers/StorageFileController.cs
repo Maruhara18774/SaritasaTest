@@ -22,19 +22,34 @@ namespace Saritasa.BackendApi.Controllers
         public async Task<IActionResult> CreateText(CreateTextRequest input)
         {
             var userID = _httpContextAccessor.HttpContext!.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result = await _storageFileService.CreateText(input, new Guid(userID));
-            return Ok("http://localhost:5000/StorageFile/AccessText/" + result);
+            var result = await _storageFileService.CreateTextAsync(input, new Guid(userID));
+            return Ok("http://localhost:5000/StorageFile/AccessText?id=" + result);
         }
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> AccessText(string id)
         {
-            var userID = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userID = _httpContextAccessor.HttpContext!.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             string currentUser = userID == null ? "Guest": userID.ToString();
 
-            var result = await _storageFileService.AccessText(id, currentUser);
+            var result = await _storageFileService.AccessTextAsync(id, currentUser);
             return Ok(result);
+        }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetTexts()
+        {
+            var result = await _storageFileService.GetTextsAsync();
+            return Ok(result);
+        }
+        [HttpDelete]
+        [Authorize]
+        public async Task<IActionResult> DeleteText(string id)
+        {
+            var result = await _storageFileService.DeleteTextAsync(id);
+            if(result) return Ok(result);
+            return BadRequest("Text did not exist in system");
         }
     }
 }

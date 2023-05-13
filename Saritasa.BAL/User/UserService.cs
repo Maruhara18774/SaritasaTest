@@ -43,7 +43,7 @@ namespace Saritasa.BAL.User
             return "Error";
         }
 
-        public async Task<string> Login(LoginUserRequest request)
+        public async Task<string> LoginAsync(LoginUserRequest request)
         {
             // Check email is exist in system
             var user = await _userManager.FindByEmailAsync(request.Email);
