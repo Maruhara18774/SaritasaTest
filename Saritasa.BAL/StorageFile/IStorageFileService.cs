@@ -14,5 +14,9 @@ namespace Saritasa.BAL.StorageFile
         Task<string> AccessTextAsync(string id, string updatedUser);
         Task<List<TextViewModel>> GetTextsAsync();
         Task<bool> DeleteTextAsync(string id);
+        Task<bool> CreateFileAsync(Guid id, Guid userID, string path, bool downloadOnce);
+        Task<string> GetServerFileURLAsync(string id, string updatedUser);
+        Task<List<FileViewModel>> GetFilesAsync();
+        Task<bool> DeleteFileAsync(string id);
     }
 }
