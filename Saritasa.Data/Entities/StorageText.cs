@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Saritasa.Data.Entities
 {
-    public class StorageFile: StorageAttribute
+    public class StorageText: StorageAttribute
     {
-        public string? Url { get; set; }
+        public string Content { get; set; }
+
     }
 }

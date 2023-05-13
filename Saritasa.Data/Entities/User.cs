@@ -10,5 +10,6 @@ namespace Saritasa.Data.Entities
     public class User : IdentityUser<Guid>
     {
         public virtual List<StorageFile>? StorageFiles { get; set; }
+        public virtual List<StorageText>? StorageTexts { get; set; }
     }
 }

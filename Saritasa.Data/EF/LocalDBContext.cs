@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Saritasa.Data.Configuration;
+using Saritasa.Data.Configurations;
 
 namespace Saritasa.Data.EF
 {
     public class LocalDBContext: IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         public DbSet<StorageFile>? StorageFiles { get; set; }
+        public DbSet<StorageText>? StorageTexts { get; set; }
         public LocalDBContext(DbContextOptions options) : base(options)
         {
         }
@@ -22,6 +24,7 @@ namespace Saritasa.Data.EF
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new StorageFileConfiguration());
+            modelBuilder.ApplyConfiguration(new StorageTextConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
     }

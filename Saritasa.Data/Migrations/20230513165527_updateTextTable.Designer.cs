@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Saritasa.Data.EF;
 
@@ -11,9 +12,10 @@ using Saritasa.Data.EF;
 namespace Saritasa.Data.Migrations
 {
     [DbContext(typeof(LocalDBContext))]
-    partial class LocalDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230513165527_updateTextTable")]
+    partial class updateTextTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

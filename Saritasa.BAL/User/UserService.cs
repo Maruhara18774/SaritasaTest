@@ -23,11 +23,6 @@ namespace Saritasa.BAL.User
             _signInManager = signInManager;
         }
 
-        public Task<bool> ChangePasswordAsync(ChangePasswordRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<string> CreateAsync(RegisterUserRequest request)
         {
             // Check is this user exist on system --> If yes, deny
@@ -60,8 +55,8 @@ namespace Saritasa.BAL.User
             // Valid information - Generate token
             var claims = new[]
             {
-                new Claim(ClaimTypes.Authentication, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email)
             };
             // Key: 0123456789ASDQWE; Issuer: Saritasa.
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("0123456789ASDQWE"));
